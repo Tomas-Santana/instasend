@@ -1,5 +1,5 @@
-import custom_types.payload
-from constants import INSTAGRAM_BASE_URL, INSTAGRAM_MESSAGES_ENDPOINT
+from instasend.custom_types import payload as payload_types
+from instasend.constants import INSTAGRAM_BASE_URL, INSTAGRAM_MESSAGES_ENDPOINT
 import requests
 
 class Instagram:
@@ -29,9 +29,9 @@ class Instagram:
             raise Exception(f"Error sending message: {response.status_code} - {response.text}")
         
     @staticmethod
-    def process_payload(payload: dict) -> custom_types.payload.InstagramPayload:
+    def process_payload(payload: dict) -> payload_types.InstagramPayload:
         try:
-            return custom_types.payload.InstagramPayload(**payload)
+            return payload_types.InstagramPayload(**payload)
         except Exception as e:
             raise ValueError(f"Invalid payload: {e}")
 
